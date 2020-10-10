@@ -1,11 +1,13 @@
 {
   "name": "svelte-prism",
-  "version": "1.9999.9999999",
+  "version": "1.0.0",
   "description": "Prismjs for Svelte",
-  "main": "index.js",
+  "main": "index.ts",
+  "types": "index.d.ts",
   "svelte": "src/Prism.svelte",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
+    "build": "tsc",
     "semantic-release": "semantic-release"
   },
   "repository": {
@@ -26,10 +28,10 @@
   },
   "homepage": "https://github.com/jakobrosenberg/svelte-prism#readme",
   "dependencies": {
+    "@types/prismjs": "^1.16.1",
     "prism-svelte": "^0.4.0",
-    "prismjs": "^1.17.1"
-  },
-  "devDependencies": {
-    "semantic-release": "^17.0.4"
+    "prismjs": "^1.17.1",
+    "svelte": "^3.28.0",
+    "typescript": "^4.0.3"
   }
 }
