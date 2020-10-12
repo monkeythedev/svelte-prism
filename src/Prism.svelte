@@ -14,7 +14,7 @@
   export let transform: (src: string) => string = (src) => src;
 
   let element: HTMLDivElement;
-  let formattedCode: HTMLDivElement;
+  let formattedCode: string;
 
   let elementObserver: MutationObserver;
   onMount(() => {
@@ -26,7 +26,6 @@
       } else {
         source = charData.target.textContent;
       }
-      console.log(source);
     });
 
     elementObserver.observe(element, {
@@ -37,7 +36,7 @@
   });
 
   onDestroy(() => {
-    elementObserver.disconnect();
+    elementObserver?.disconnect();
   });
 
   $: source && highlightCode(source);
