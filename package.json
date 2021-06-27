@@ -2,14 +2,31 @@
   "name": "svelte-prism",
   "version": "1.0.0",
   "description": "Prismjs for Svelte",
-  "main": "index.ts",
-  "types": "index.d.ts",
-  "svelte": "src/Prism.svelte",
   "scripts": {
+    "clean-lib": "del-cli lib/*",
+    "copy:package:cjs": "copyfiles --up 1 cjs/* lib/cjs",
+    "copy:package": "copyfiles package.json lib",
+    "copy:src": "copyfiles --up 2 src/lib/**/* lib/src",
+    "copy:cjs": "copyfiles --up 2 src/lib/**/!(*.ts) lib/cjs",
+    "copy": "copyfiles --up 2 src/lib/**/!(*.ts) lib",
+    "tsc": "tsc -p tsconfig.lib.json",
+    "tsc:cjs": "tsc -p tsconfig.lib.cjs.json",
+    "build": "npm-run-all --parallel copy:package copy:package:cjs copy copy:cjs copy:src tsc tsc:cjs",
+    "lib": "npm run clean-lib && npm run build",
+    "dev": "npm run clean-lib && nodemon --watch src -e ts --exec \"npm run build\"",
+    "prepublish": "npm run lib",
+    "publish": "npm publish ./lib",
     "test": "echo \"Error: no test specified\"",
-    "build": "tsc",
     "semantic-release": "semantic-release"
   },
+	"type": "module",
+	"exports": {
+		".": {
+			"import": "./index.js",
+			"require": "./cjs/index.js"
+		},
+		"./cjs": "./cjs/index.js"
+	},
   "repository": {
     "type": "git",
     "url": "https://github.com/jakobrosenberg/svelte-prism.git"
