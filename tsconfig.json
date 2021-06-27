@@ -17,6 +17,6 @@
     "baseUrl": "."
   },
   "include": [
-    "./index.ts"
+    "src/lib/index.ts"
   ]
 }
