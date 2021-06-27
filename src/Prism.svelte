@@ -39,7 +39,7 @@
     elementObserver?.disconnect();
   });
 
-  $: source && highlightCode(source);
+  $: source != null && highlightCode(source);
 
   function highlightCode(source: string) {
     const grammar = prism.languages[language];
