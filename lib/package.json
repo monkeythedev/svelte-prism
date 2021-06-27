@@ -24,8 +24,7 @@
 		".": {
 			"import": "./index.js",
 			"require": "./cjs/index.js"
-		},
-		"./cjs": "./cjs/index.js"
+		}
 	},
   "repository": {
     "type": "git",
